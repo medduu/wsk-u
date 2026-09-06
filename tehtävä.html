@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lounari</title>
+    <title>Concertsor</title>
     <link rel="stylesheet" href="tehtävä.css">
 </head>
 
@@ -11,7 +11,10 @@
 
     <header class="header">
         <div class="container">
+            <button id="open_dialog" class="dialog-btn" aria-label="Avaa ilmoittautumislomake">+</button>
+
             <h1 class="logo">Consertscor.</h1>
+            <div class="swag-banner"></div>
 
             <nav class="navigation">
                 <a href="#">Frontpage</a>
@@ -21,33 +24,67 @@
         </div>
     </header>
 
+    <dialog >
+        <h2>Sign up</h2>
+        <p>Register using the form below</p>
+        <button id="close_dialog">Close</button>
+    </dialog>
+
     <main>
-        <section class="intro container">
+        <div class="intro">
+        <div class="intro-content container">
+            <h2 class="visually-hidden">Tervetuloa</h2>
             <p>Tänne lisää sisältöä seuraavina viikkoina</p>
-        </section>
+        </div>
+        </div>
 
+        <div class="bigbox"></div>
+
+        
         <section class="about container">
-            <img src="images/concerts.jpeg"
-                 alt=""
-                 class="about-image">
+        <img src="images/swag.jpeg" 
+            alt="" 
+            class="about-image">
 
-            <div class="about-text">
-                <p class="small-title">About us!</p>
+    <img src="images/topping.png"  
+        alt=""
+        class="about-decor">
 
-                <h2>This is our story</h2>
+    <div class="about-text">
+        <p class="small-title">About us!</p>
+        <h2>This is our story</h2>
+        <p>
+            We are a student-focused ticket company that makes it easier and more affordable for young people to enjoy live events. We sell tickets to concerts, festivals, parties, and other exciting events at special student-friendly prices.
+            We believe that students should be able to experience great events without having to worry about expensive ticket prices. 
+            Our goal is to connect students with unforgettable experiences, great music, and exciting events while helping them save money. Whether you want to see your favorite artist, discover new music, or spend an amazing night with friends, we are here to help make it happen for less.
+        </p>
+    </div>
 
-                <p>
-                    We are a...
-                </p>
-            </div>
+    <div class="clear"></div>
+</section>
 
-            <div class="clear"></div>
-        </section>
     </main>
 
     <footer class="footer">
         <p>&copy; Consertscor</p>
     </footer>
+
+    <script>
+    const opendialog = document.querySelector('#open_dialog'); 
+    const closedialog = document.querySelector('#close_dialog'); 
+    const dialog = document.querySelector('dialog'); 
+
+    const openDialog = () => { 
+        dialog.showModal(); 
+    }; 
+
+    const closeDialog = () => {
+        dialog.close();
+    };
+
+    opendialog.addEventListener('click', openDialog); 
+    closedialog.addEventListener('click', closeDialog);
+    </script>
 
 </body>
 </html>
