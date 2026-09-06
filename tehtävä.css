@@ -1,3 +1,17 @@
+:root {
+    --color-primary: #ff0392;
+    --color-bg-light: #f4f4f4;
+    --color-bg-white: white;
+    --color-text: #222;
+    --color-text-dark: #000000;
+    --color-nav-inactive: #bfc3c5;
+    --color-nav-underline: #070604;
+    --color-footer-bg: #202a30;
+    --color-footer-text: white;
+    --color-dialog-bg: #87b9dd;
+    --shadow-header: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -5,26 +19,29 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    color: #222;
-    background-color: white;
+    color: var(--color-text);
+    background-color: var(--color-bg-white);
+    overflow-x: hidden;
 }
 
 .container {
-    width: 1100px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
 .header {
-    background-color: #202a30;
-    color: white;
+    background-color: var(--color-primary);
+    color: var(--color-footer-text);
     height: 100px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-header);
 }
 
 .logo {
     float: left;
     margin: 35px 0 0 70px;
-    color: #d99b00;
+    color: var(--color-text-dark);
     font-family: Georgia, serif;
 }
 
@@ -35,24 +52,33 @@ body {
 }
 
 .navigation a {
-    color: #bfc3c5;
+    color: var(--color-nav-inactive);
     text-decoration: none;
     margin-left: 30px;
     padding-bottom: 12px;
 }
 
 .navigation a:first-child {
-    color: #d99b00;
-    border-bottom: 2px solid #d99b00;
+    color: var(--color-text-dark);
+    border-bottom: 2px solid var(--color-nav-underline);
 }
 
 .navigation a:hover {
-    color: #d99b00;
+    color: var(--color-text-dark);
 }
 
 .intro {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  background: url(images/rihanna.jpeg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+.intro-content {
+    position: relative;
+    padding: 20px 30px;
     height: 225px;
-    padding-top: 45px;
 }
 
 .intro p {
@@ -60,14 +86,15 @@ body {
 }
 
 .about {
-    background-color: #f4f4f4;
+    position: relative; 
+    background-color: var(--color-bg-light);
     padding: 70px 45px;
 }
 
 .about-image {
     float: left;
     width: 350px;
-    height: 230px;
+    height: 300px;
     object-fit: cover;
     margin-right: 45px;
 }
@@ -76,22 +103,32 @@ body {
     padding-top: 5px;
 }
 
+.about-decor {
+    position: absolute;
+    top: -40px;
+    right: -50px;   
+    width: 150px;
+    height: auto;
+    z-index: 5;
+    transform: rotate(-15deg);   
+}
+
 .small-title {
     margin: 0;
-    color: #777;
-    font-size: 14px;
+    color: var(--color-text-dark);
+    font-size: 30px;
     font-weight: bold;
 }
 
 .about-text h2 {
     margin-top: 5px;
     margin-bottom: 10px;
-    font-size: 28px;
+    font-size: 24px;
 }
 
 .about-text p {
     line-height: 1.5;
-    color: #666;
+    color: var(--color-text-dark);
 }
 
 .clear {
@@ -101,7 +138,185 @@ body {
 .footer {
     margin-top: 45px;
     padding: 30px;
-    background-color: #202a30;
-    color: white;
+    background-color: var(--color-footer-bg);
+    color: var(--color-footer-text);
     text-align: center;
 }
+
+dialog {
+    background-color: var(--color-dialog-bg);
+}
+dialog::backdrop {
+    backdrop-filter: blur(5px);
+}
+
+.dialog-btn {
+    float: right;
+    margin: 30px 0 0 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--color-bg-white);
+    color: var(--color-primary);
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.dialog-btn:hover {
+    background-color: var(--color-nav-inactive);
+}
+
+.navigation > a {
+    font-weight: 500;
+}
+
+a[href="#"] {
+    cursor: default;
+}
+
+.small-title + h2 {
+    color: var(--color-primary);
+}
+
+.small-title ~ p {
+    font-style: italic;
+}
+
+.navigation a:nth-child(even) {
+    opacity: 0.9;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ============================= */
+/* BREAKPOINTIT                  */
+/* ============================= */
+
+@media (max-width: 768px) {
+  .header {
+    height: auto;
+    padding: 15px 0;
+  }
+
+  .logo {
+    float: none;
+    margin: 0 0 15px 15px;
+    font-size: 22px;
+  }
+
+  .navigation {
+    float: none;
+    margin: 0 0 0 15px;
+    margin-right: 0;
+  }
+
+  .navigation a {
+    margin-left: 0;
+    margin-right: 20px;
+    font-size: 14px;
+  }
+
+  .intro {
+    background-attachment: scroll;
+    min-height: 280px;
+  }
+
+  .about {
+    padding: 40px 20px;
+  }
+
+  .about-image {
+    float: none;
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .about-decor {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro {
+    min-height: 200px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .navigation {
+    margin-left: 15px;
+  }
+
+  .navigation a {
+    display: block;
+    margin: 0 0 10px 0;
+  }
+
+  .small-title {
+    font-size: 22px;
+  }
+
+  .about-text h2 {
+    font-size: 19px;
+  }
+
+  .about-text p {
+    font-size: 14px;
+  }
+}
+
+/*.site-header {
+  background-color: #FFFFA1;    
+  width: 100%;
+  padding: 20px 30px;           
+  box-sizing: border-box;       
+  display: flex;
+  align-items: center;        
+}
+
+
+.logo-text {
+  font-family: 'Anton', 'Impact', sans-serif;
+  color: #FF94C2;              
+  font-size: 3.5rem;            
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;       
+  line-height: 1;               
+}
+
+
+.bigbox {
+    background-color: hotpink;
+    background-image: url('images/dance.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    position: relative;
+}
+
+
+/*background-color: 
+  background-image
+  background-position
+  background-size
+  background-repeat
+  background-attachment
+*/
