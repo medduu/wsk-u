@@ -3,87 +3,323 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concertsor</title>
+    <title>Concertscor</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="tehtävä.css">
+
 </head>
 
 <body>
 
     <header class="header">
         <div class="container">
-            <button id="open_dialog" class="dialog-btn" aria-label="Avaa ilmoittautumislomake">+</button>
-
-            <h1 class="logo">Consertscor.</h1>
-            <div class="swag-banner"></div>
+            <h1 class="logo">Concertscor.</h1>
 
             <nav class="navigation">
                 <a href="#">Frontpage</a>
                 <a href="#">Concerts</a>
                 <a href="#">Contact</a>
             </nav>
+
+            <button id="open_dialog" class="dialog-btn" aria-label="Sign up or log in"><i class="fa-solid fa-user"></i></button>
         </div>
     </header>
 
-    <dialog >
-        <h2>Sign up</h2>
-        <p>Register using the form below</p>
-        <button id="close_dialog">Close</button>
+    <dialog id="auth_dialog" class="auth">
+        <div class="auth-top">
+            <p class="auth-logo">Concertscor.</p>
+            <button id="close_dialog" class="auth-close" aria-label="Close">&times;</button>
+        </div>
+
+        <div class="auth-tabs">
+            <button type="button" class="tab active" data-tab="signup">Sign up</button>
+            <button type="button" class="tab" data-tab="login">Log in</button>
+        </div>
+
+        <!-- SIGN UP -->
+        <form id="signup_form" class="auth-form" novalidate>
+            <p class="auth-intro">Create an account to grab student tickets.</p>
+
+            <div class="field">
+                <label for="signup_name">Name or username</label>
+                <input type="text" id="signup_name" autocomplete="name" placeholder="Your name">
+                <p class="field-error"></p>
+            </div>
+
+            <div class="field">
+                <label for="signup_email">Metropolia email</label>
+                <input type="email" id="signup_email" autocomplete="email" placeholder="example@metropolia.fi">
+                <p class="field-error"></p>
+            </div>
+
+            <div class="field">
+                <label for="signup_password">Password</label>
+                <input type="password" id="signup_password" autocomplete="new-password" placeholder="Password">
+                <p class="field-hint">At least 8 characters, one capital letter and one number.</p>
+                <p class="field-error"></p>
+            </div>
+
+            <button type="submit" class="btn btn-block">Sign up</button>
+        </form>
+
+        <form id="login_form" class="auth-form" novalidate hidden>
+            <p class="auth-intro">Welcome back! Log in with your email and password.</p>
+
+            <div class="field">
+                <label for="login_email">Metropolia email</label>
+                <input type="email" id="login_email" autocomplete="email" placeholder="example@metropolia.fi">
+                <p class="field-error"></p>
+            </div>
+
+            <div class="field">
+                <label for="login_password">Password</label>
+                <input type="password" id="login_password" autocomplete="current-password" placeholder="Password">
+                <p class="field-error"></p>
+            </div>
+
+            <button type="submit" class="btn btn-block">Log in</button>
+        </form>
+
+        <div id="welcome" class="auth-welcome" hidden>
+            <i class="fa-solid fa-circle-check welcome-icon"></i>
+            <h2 id="welcome_text">Welcome!</h2>
+            <p>You are logged in. See you at the next concert!</p>
+            <button type="button" id="logout_btn" class="pill pill-btn">Log out</button>
+        </div>
     </dialog>
 
     <main>
-        <div class="intro">
-        <div class="intro-content container">
-            <h2 class="visually-hidden">Tervetuloa</h2>
-            <p>Tänne lisää sisältöä seuraavina viikkoina</p>
-        </div>
-        </div>
+        <section class="intro">
+            <div class="intro-content container">
+                <h2 class="intro-title">Concertscor.</h2>
+                <p class="intro-subtitle">What's on <span>tonight?</span></p>
+                <p class="intro-text">Find student-priced tickets to concerts, festivals and parties, and pick your favorite night out.</p>
+                <a href="#" class="btn"><i class="fa-solid fa-ticket"></i> Browse concerts</a>
+            </div>
+        </section>
 
-        <div class="bigbox"></div>
+        <section class="genres">
+            <p class="eyebrow">Concerts</p>
+            <h2 class="genres-title">Explore events by genre</h2>
 
-        
+            <div class="pills">
+                <a href="#" class="pill">Pop</a>
+                <a href="#" class="pill">Rock</a>
+                <a href="#" class="pill">Hip hop</a>
+                <a href="#" class="pill">Electronic</a>
+                <a href="#" class="pill">Jazz</a>
+            </div>
+        </section>
+
         <section class="about container">
-        <img src="images/swag.jpeg" 
-            alt="" 
-            class="about-image">
+            <img src="images/swag.jpeg" alt="Crowd at a concert" class="about-image">
 
-    <img src="images/topping.png"  
-        alt=""
-        class="about-decor">
+            <img src="images/topping.png" alt="" class="about-decor">
 
-    <div class="about-text">
-        <p class="small-title">About us!</p>
-        <h2>This is our story</h2>
-        <p>
-            We are a student-focused ticket company that makes it easier and more affordable for young people to enjoy live events. We sell tickets to concerts, festivals, parties, and other exciting events at special student-friendly prices.
-            We believe that students should be able to experience great events without having to worry about expensive ticket prices. 
-            Our goal is to connect students with unforgettable experiences, great music, and exciting events while helping them save money. Whether you want to see your favorite artist, discover new music, or spend an amazing night with friends, we are here to help make it happen for less.
-        </p>
-    </div>
+            <div class="about-text">
+                <p class="small-title">About us!</p>
+                <h2>This is our story</h2>
+                <p>
+                    We are a student-focused ticket company that makes it easier and more affordable for young people to enjoy live events. We sell tickets to concerts, festivals, parties, and other exciting events at special student-friendly prices.
+                    We believe that students should be able to experience great events without having to worry about expensive ticket prices.
+                    Our goal is to connect students with unforgettable experiences, great music, and exciting events while helping them save money. Whether you want to see your favorite artist, discover new music, or spend an amazing night with friends, we are here to help make it happen for less.
+                </p>
+            </div>
+        </section>
 
-    <div class="clear"></div>
-</section>
+        <section class="features container">
+            <h2 class="section-title">Why students choose us</h2>
 
+            <div class="cards">
+                <article class="card">
+                    <i class="fa-solid fa-ticket card-icon"></i>
+                    <h3>Student prices</h3>
+                    <p>Special discounts on every event, just show your student card.</p>
+                </article>
+
+                <article class="card">
+                    <!-- Inline SVG-ikoni -->
+                    <svg class="card-icon" viewBox="0 0 24 24" width="48" height="48" fill="currentColor" aria-hidden="true">
+                        <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                    </svg>
+                    <h3>Great music</h3>
+                    <p>From your favorite artists to acts you haven't heard yet.</p>
+                </article>
+
+                <article class="card">
+                    <i class="fa-solid fa-user-group card-icon"></i>
+                    <h3>Bring friends</h3>
+                    <p>Group tickets make a night out cheaper for everyone.</p>
+                </article>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
-        <p>&copy; Consertscor</p>
+        <div class="socials">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Spotify"><i class="fa-brands fa-spotify"></i></a>
+            <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+        <p>&copy; Concertscor</p>
     </footer>
 
     <script>
-    const opendialog = document.querySelector('#open_dialog'); 
-    const closedialog = document.querySelector('#close_dialog'); 
-    const dialog = document.querySelector('dialog'); 
+    const dialog = document.querySelector('#auth_dialog');
+    const openBtn = document.querySelector('#open_dialog');
+    const closeBtn = document.querySelector('#close_dialog');
+    const tabs = document.querySelectorAll('.tab');
+    const signupForm = document.querySelector('#signup_form');
+    const loginForm = document.querySelector('#login_form');
+    const welcome = document.querySelector('#welcome');
+    const welcomeText = document.querySelector('#welcome_text');
+    const logoutBtn = document.querySelector('#logout_btn');
+    const tabsBar = document.querySelector('.auth-tabs');
 
-    const openDialog = () => { 
-        dialog.showModal(); 
-    }; 
+    const USERS_KEY = 'concertscor_users';
+    const CURRENT_KEY = 'concertscor_current';
 
-    const closeDialog = () => {
-        dialog.close();
+    const EMAIL_RE = /^[^\s@]+@metropolia\.fi$/i;
+    const PASSWORD_RE = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+    const getUsers = () => {
+        try {
+            return JSON.parse(localStorage.getItem(USERS_KEY)) || {};
+        } catch (e) {
+            return {};
+        }
+    };
+    const saveUsers = (users) => localStorage.setItem(USERS_KEY, JSON.stringify(users));
+
+    const getCurrentUser = () => {
+        const email = localStorage.getItem(CURRENT_KEY);
+        const user = email ? getUsers()[email] : null;
+        return user ? { email, name: user.name } : null;
     };
 
-    opendialog.addEventListener('click', openDialog); 
-    closedialog.addEventListener('click', closeDialog);
+    const setError = (input, message) => {
+        input.parentElement.querySelector('.field-error').textContent = message;
+        input.classList.toggle('invalid', Boolean(message));
+        return !message;
+    };
+    const clearErrors = (form) => {
+        form.querySelectorAll('input').forEach((input) => setError(input, ''));
+    };
+
+    const showView = (view) => {
+        signupForm.hidden = view !== 'signup';
+        loginForm.hidden = view !== 'login';
+        welcome.hidden = view !== 'welcome';
+        tabsBar.hidden = view === 'welcome';
+        tabs.forEach((tab) => tab.classList.toggle('active', tab.dataset.tab === view));
+
+        if (view === 'welcome') {
+            welcomeText.textContent = 'Welcome, ' + getCurrentUser().name + '!';
+        }
+    };
+
+    const updateHeaderButton = () => {
+        const user = getCurrentUser();
+        if (user) {
+            openBtn.textContent = user.name.charAt(0).toUpperCase();
+            openBtn.setAttribute('aria-label', 'Account: ' + user.name);
+        } else {
+            openBtn.innerHTML = '<i class="fa-solid fa-user"></i>';
+            openBtn.setAttribute('aria-label', 'Sign up or log in');
+        }
+    };
+
+    openBtn.addEventListener('click', () => {
+        showView(getCurrentUser() ? 'welcome' : 'signup');
+        dialog.showModal();
+    });
+    closeBtn.addEventListener('click', () => dialog.close());
+
+    dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) dialog.close();
+    });
+
+    tabs.forEach((tab) => {
+        tab.addEventListener('click', () => showView(tab.dataset.tab));
+    });
+
+    signupForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const nameInput = document.querySelector('#signup_name');
+        const emailInput = document.querySelector('#signup_email');
+        const passwordInput = document.querySelector('#signup_password');
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim().toLowerCase();
+        const password = passwordInput.value;
+
+        const users = getUsers();
+
+        const okName = setError(nameInput, name.length < 2 ? 'Enter your name or a username (at least 2 characters).' : '');
+        let emailMsg = '';
+        if (!EMAIL_RE.test(email)) {
+            emailMsg = 'Use your Metropolia email, like example@metropolia.fi.';
+        } else if (users[email]) {
+            emailMsg = 'This email is already registered. Try logging in.';
+        }
+        const okEmail = setError(emailInput, emailMsg);
+        const okPassword = setError(passwordInput, PASSWORD_RE.test(password) ? '' : 'Password needs at least 8 characters, one capital letter and one number.');
+
+        if (!(okName && okEmail && okPassword)) return;
+
+        users[email] = { name, password };
+        saveUsers(users);
+        localStorage.setItem(CURRENT_KEY, email);
+
+        signupForm.reset();
+        updateHeaderButton();
+        showView('welcome');
+    });
+
+    loginForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const emailInput = document.querySelector('#login_email');
+        const passwordInput = document.querySelector('#login_password');
+
+        const email = emailInput.value.trim().toLowerCase();
+        const password = passwordInput.value;
+        const user = getUsers()[email];
+
+        clearErrors(loginForm);
+
+        if (!EMAIL_RE.test(email)) {
+            setError(emailInput, 'Enter your Metropolia email, like example@metropolia.fi.');
+            return;
+        }
+        if (!user) {
+            setError(emailInput, 'No account found with this email. Sign up first.');
+            return;
+        }
+        if (user.password !== password) {
+            setError(passwordInput, 'Wrong password. Try again.');
+            return;
+        }
+
+        localStorage.setItem(CURRENT_KEY, email);
+        loginForm.reset();
+        updateHeaderButton();
+        showView('welcome');
+    });
+
+    logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem(CURRENT_KEY);
+        updateHeaderButton();
+        showView('login');
+    });
+
+    updateHeaderButton();
     </script>
 
 </body>
